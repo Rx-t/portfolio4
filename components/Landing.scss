@@ -1,0 +1,132 @@
+@import url(https://db.onlinewebfonts.com/c/99501fdab737541e9315ceaf9229370f?family=Monument+Extended);
+@import url(//db.onlinewebfonts.com/c/3c6b0199ae7b57966132e83c939d77e2?family=Futura+PT+Medium);
+
+.landing {
+  width: 100%;
+  height: 15rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0 10rem;
+
+  @media screen and (max-width: 1100px) {
+    padding: 0 5rem;
+  }
+
+  @media screen and (max-width: 900px) {
+    flex-direction: column;
+    height: fit-content;
+    grid-gap: 2rem;
+  }
+
+  h1 {
+    font-size: 3rem;
+    font-family: 'Futura PT Medium', sans-serif;
+    padding-right: 5rem;
+
+
+    @media screen and (max-width: 900px) {
+      padding-right: 0;
+      text-align: center;
+    }
+  }
+
+  // rajoute une bordure au texte et vide le fond
+  span.name {
+    -webkit-text-stroke: 1px white;
+    color: transparent;
+  }
+}
+
+@mixin circle-text-text($size, $count) {
+  $angle: floor(360 / $count);
+
+  width: $size;
+  height: $size;
+
+  transition: 0.2s;
+
+  span {
+    height: $size;
+    transition: 0.2s;
+  }
+
+  @for $i from 0 to $count + 1 {
+    span:nth-of-type(#{$i}) {
+      $deg: $i * $count;
+      transform: rotateZ(#{$deg}deg);
+    }
+  }
+}
+
+.download-resume {
+  $size: 150px;
+
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  max-width: $size;
+  max-height: $size;
+  min-width: $size;
+  min-height: $size;
+
+  transition: 0.2s;
+
+  $count: 19;
+
+  a {
+    z-index: 1;
+
+    position: absolute;
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+    transition: 0.2s;
+
+    &:hover {
+      font-size: 10px;
+    }
+
+    &:hover + p {
+      @include circle-text-text(125px, $count);
+    }
+    &:not(:hover) + p {
+      @include circle-text-text($size, $count);
+    }
+  }
+
+  p {
+    animation: rotate 5s infinite linear;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+
+    span {
+      display: block;
+      width: 20px;
+      text-align: center;
+      font-weight: bolder;
+      position: absolute;
+      font-family: "Monument Extended", sans-serif;
+    }
+
+    @keyframes rotate {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  }
+}
+
+

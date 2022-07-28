@@ -1,0 +1,54 @@
+@use "./variables";
+@import url("https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  font-family: "Comfortaa", sans-serif;
+
+  scrollbar-width: thin;
+}
+
+body {
+  background-color: variables.$background;
+  color: variables.$text;
+
+  width: 100%;
+  min-height: 100vh;
+}
+
+::-webkit-scrollbar {
+  background: variables.$background;
+  width: 0.5rem;
+}
+
+::-webkit-scrollbar-thumb {
+  background: mix(variables.$text, variables.$background, 25%);
+  border-radius: 9999px;
+}
+
+footer {
+  margin-top: 5rem;
+
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: 0.2s;
+
+  svg {
+    margin-right: .5rem;
+  }
+
+  a {
+    color: variables.$blue;
+    text-decoration: none;
+
+    &:hover {
+      color: darken(variables.$blue, 10%);
+    }
+  }
+}
